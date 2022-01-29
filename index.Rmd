@@ -7,3 +7,18 @@ site: bookdown::bookdown_site
 
 # Overview
 
+How to plot in R.
+
+Create data.
+
+```{r}
+x = rnorm(10)
+y = rnorm(10)
+```
+
+Plot.
+
+```{r}
+plot(x,y)
+```
+
