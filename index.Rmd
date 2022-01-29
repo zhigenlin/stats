@@ -7,7 +7,7 @@ site: bookdown::bookdown_site
 
 # Overview
 
-How to plot in R.
+How to plot in R. 
 
 Create data.
 
