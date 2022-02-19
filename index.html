@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Page not found | Statistics</title>
-  <meta name="description" content="Page not found | Statistics" />
+  <title>Statistics</title>
+  <meta name="description" content="Statistics" />
   <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Page not found | Statistics" />
+  <meta property="og:title" content="Statistics" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Page not found | Statistics" />
+  <meta name="twitter:title" content="Statistics" />
   
   
   
@@ -31,7 +31,7 @@
   
   
 
-
+<link rel="next" href="bayesian-models-1.html"/>
 <script src="libs/header-attrs-2.11/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
@@ -173,11 +173,55 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="page-not-found" class="section level1">
-<h1>Page not found</h1>
-<p>The page you requested cannot be found (perhaps it was moved or renamed).</p>
-<p>You may want to try searching to find the page's new location, or use
-the table of contents to find the page you are looking for.</p>
+<div id="header">
+<h1 class="title">Statistics</h1>
+<p class="author"><em></em></p>
+<p class="date"><em>2022-02-19</em></p>
+</div>
+<div id="overview" class="section level1" number="1">
+<h1><span class="header-section-number">Chapter 1</span> Overview</h1>
+<p>This website will feature some worked examples from different areas of statistics.</p>
+<p>You can also check out my larger articles on <a href="https://zhigenlin.com">my website</a>.</p>
+<p>Plotting example in R.</p>
+<ol style="list-style-type: decimal">
+<li>Create data.</li>
+</ol>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="index.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1</span>)</span>
+<span id="cb1-2"><a href="index.html#cb1-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">rnorm</span>(<span class="dv">10</span>)</span>
+<span id="cb1-3"><a href="index.html#cb1-3" aria-hidden="true" tabindex="-1"></a>y <span class="ot">=</span> <span class="fu">rnorm</span>(<span class="dv">10</span>)</span></code></pre></div>
+<ol start="2" style="list-style-type: decimal">
+<li>Plot.</li>
+</ol>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="index.html#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x,y)</span></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+<div id="bayesian-models" class="section level2" number="1.1">
+<h2><span class="header-section-number">1.1</span> Bayesian models</h2>
+<div id="regression-example" class="section level3" number="1.1.1">
+<h3><span class="header-section-number">1.1.1</span> Regression example</h3>
+<p>Assume a Poisson probability model:</p>
+<p><span class="math inline">\(Y|x \sim Poisson(\theta_{x})\)</span></p>
+<p><span class="math inline">\(Y\)</span>: number of offspring</p>
+<p><span class="math inline">\(x\)</span>: age of bird</p>
+<p>Poisson regression model with log-link</p>
+<p><span class="math inline">\(Y|x \sim Poisson(exp(\mathbf{\beta}^T\textbf{x}))\)</span></p>
+<p>where</p>
+<p><span class="math inline">\(logE[Y|x] = log(\theta_x) = \beta_1+\beta_2x+\beta_3x^2\)</span>.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="index.html#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1</span>)</span>
+<span id="cb3-2"><a href="index.html#cb3-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">rnorm</span>(<span class="dv">10</span>)</span>
+<span id="cb3-3"><a href="index.html#cb3-3" aria-hidden="true" tabindex="-1"></a>y <span class="ot">=</span> <span class="fu">rnorm</span>(<span class="dv">10</span>)</span></code></pre></div>
+<ol start="2" style="list-style-type: decimal">
+<li>Plot.</li>
+</ol>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="index.html#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x,y)</span></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
+</div>
+</div>
+<div id="sources" class="section level2" number="1.2">
+<h2><span class="header-section-number">1.2</span> Sources</h2>
+<p>Adapted from lecture notes by Dr Bronwyn Loong for STAT7016 at ANU.</p>
+<p>Reference: Hoff, Peter D. (2000). A First Course in Bayesian Statistical Methods. Springer.</p>
+
+</div>
 </div>
             </section>
 
@@ -185,7 +229,7 @@ the table of contents to find the page you are looking for.</p>
         </div>
       </div>
 
-
+<a href="bayesian-models-1.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -216,7 +260,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/zhigenlin/stats/edit/master/%s",
+"link": "https://github.com/zhigenlin/stats/edit/master/index.Rmd",
 "text": "Edit"
 },
 "history": {
@@ -224,14 +268,11 @@ gitbook.start({
 "text": null
 },
 "view": {
-"link": "https://github.com/zhigenlin/stats/blob/master/%s",
+"link": "https://github.com/zhigenlin/stats/blob/master/index.Rmd",
 "text": null
 },
 "download": null,
-"search": {
-"engine": "fuse",
-"options": null
-},
+"search": false,
 "toc": {
 "collapse": "subsection"
 }

@@ -1,3 +1,10 @@
 overview
-page-1
-page-2
+bayesian-models
+regression-example
+sources
+bayesian-models-1
+regression-example-1
+sources-1
+chapter-3
+regression-example-2
+sources-2
