@@ -2,9 +2,5 @@ overview
 bayesian-models
 regression-example
 sources
-bayesian-models-1
-regression-example-1
-sources-1
 chapter-3
-regression-example-2
-sources-2
+template

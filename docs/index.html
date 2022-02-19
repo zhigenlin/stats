@@ -31,7 +31,7 @@
   
   
 
-<link rel="next" href="bayesian-models-1.html"/>
+<link rel="next" href="bayesian-models.html"/>
 <script src="libs/header-attrs-2.11/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
@@ -136,23 +136,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="./">Stats</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Overview</a>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Overview</a></li>
+<li class="chapter" data-level="2" data-path="bayesian-models.html"><a href="bayesian-models.html"><i class="fa fa-check"></i><b>2</b> Bayesian models</a>
 <ul>
-<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#bayesian-models"><i class="fa fa-check"></i><b>1.1</b> Bayesian models</a>
-<ul>
-<li class="chapter" data-level="1.1.1" data-path="index.html"><a href="index.html#regression-example"><i class="fa fa-check"></i><b>1.1.1</b> Regression example</a></li>
-</ul></li>
-<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#sources"><i class="fa fa-check"></i><b>1.2</b> Sources</a></li>
-</ul></li>
-<li class="chapter" data-level="2" data-path="bayesian-models-1.html"><a href="bayesian-models-1.html"><i class="fa fa-check"></i><b>2</b> Bayesian models</a>
-<ul>
-<li class="chapter" data-level="2.1" data-path="bayesian-models-1.html"><a href="bayesian-models-1.html#regression-example-1"><i class="fa fa-check"></i><b>2.1</b> Regression example</a></li>
-<li class="chapter" data-level="2.2" data-path="bayesian-models-1.html"><a href="bayesian-models-1.html#sources-1"><i class="fa fa-check"></i><b>2.2</b> Sources</a></li>
+<li class="chapter" data-level="2.1" data-path="bayesian-models.html"><a href="bayesian-models.html#regression-example"><i class="fa fa-check"></i><b>2.1</b> Regression example</a></li>
+<li class="chapter" data-level="2.2" data-path="bayesian-models.html"><a href="bayesian-models.html#sources"><i class="fa fa-check"></i><b>2.2</b> Sources</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="chapter-3.html"><a href="chapter-3.html"><i class="fa fa-check"></i><b>3</b> Chapter 3</a>
 <ul>
-<li class="chapter" data-level="3.1" data-path="chapter-3.html"><a href="chapter-3.html#regression-example-2"><i class="fa fa-check"></i><b>3.1</b> Regression example</a></li>
-<li class="chapter" data-level="3.2" data-path="chapter-3.html"><a href="chapter-3.html#sources-2"><i class="fa fa-check"></i><b>3.2</b> Sources</a></li>
+<li class="chapter" data-level="3.1" data-path="chapter-3.html"><a href="chapter-3.html#template"><i class="fa fa-check"></i><b>3.1</b> Template</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -193,35 +185,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>Plot.</li>
 </ol>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="index.html#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x,y)</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
-<div id="bayesian-models" class="section level2" number="1.1">
-<h2><span class="header-section-number">1.1</span> Bayesian models</h2>
-<div id="regression-example" class="section level3" number="1.1.1">
-<h3><span class="header-section-number">1.1.1</span> Regression example</h3>
-<p>Assume a Poisson probability model:</p>
-<p><span class="math inline">\(Y|x \sim Poisson(\theta_{x})\)</span></p>
-<p><span class="math inline">\(Y\)</span>: number of offspring</p>
-<p><span class="math inline">\(x\)</span>: age of bird</p>
-<p>Poisson regression model with log-link</p>
-<p><span class="math inline">\(Y|x \sim Poisson(exp(\mathbf{\beta}^T\textbf{x}))\)</span></p>
-<p>where</p>
-<p><span class="math inline">\(logE[Y|x] = log(\theta_x) = \beta_1+\beta_2x+\beta_3x^2\)</span>.</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="index.html#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1</span>)</span>
-<span id="cb3-2"><a href="index.html#cb3-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">rnorm</span>(<span class="dv">10</span>)</span>
-<span id="cb3-3"><a href="index.html#cb3-3" aria-hidden="true" tabindex="-1"></a>y <span class="ot">=</span> <span class="fu">rnorm</span>(<span class="dv">10</span>)</span></code></pre></div>
-<ol start="2" style="list-style-type: decimal">
-<li>Plot.</li>
-</ol>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="index.html#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x,y)</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
-</div>
-</div>
-<div id="sources" class="section level2" number="1.2">
-<h2><span class="header-section-number">1.2</span> Sources</h2>
-<p>Adapted from lecture notes by Dr Bronwyn Loong for STAT7016 at ANU.</p>
-<p>Reference: Hoff, Peter D. (2000). A First Course in Bayesian Statistical Methods. Springer.</p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
 
-</div>
 </div>
             </section>
 
@@ -229,7 +194,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
         </div>
       </div>
 
-<a href="bayesian-models-1.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="bayesian-models.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
