@@ -1,0 +1,38 @@
+# Chapter 3
+
+## Regression example
+
+Assume a Poisson probability model:
+
+$Y|x \sim Poisson(\theta_{x})$
+
+$Y$: number of offspring
+
+$x$: age of bird
+
+
+Poisson regression model with log-link
+
+$Y|x \sim Poisson(exp(\mathbf{\beta}^T\textbf{x}))$
+
+where
+
+$logE[Y|x] = log(\theta_x) = \beta_1+\beta_2x+\beta_3x^2$.
+
+```{r}
+set.seed(1)
+x = rnorm(10)
+y = rnorm(10)
+```
+
+2. Plot.
+
+```{r}
+plot(x,y)
+```
+
+## Sources
+
+Adapted from lecture notes by Dr Bronwyn Loong for STAT7016 at ANU.
+
+Reference: Hoff, Peter D. (2000). A First Course in Bayesian Statistical Methods. Springer.
