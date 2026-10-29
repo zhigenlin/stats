@@ -27,3 +27,16 @@ y = rnorm(10)
 plot(x,y)
 ```
 
+Example of a table
+
+```{r echo = FALSE, results='asis'}
+library(knitr)
+kable(mtcars[1:5,], caption = "A knitr kable.")
+```
+
+Original
+
+```{r}
+mtcars[1:5,]
+```
+

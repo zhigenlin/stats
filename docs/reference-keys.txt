@@ -1,6 +1,8 @@
+tab:unnamed-chunk-3
 overview
-bayesian-models
-regression-example
+test-models
+regression-overview
+poisson-regression-example
 sources
 chapter-3
 template
