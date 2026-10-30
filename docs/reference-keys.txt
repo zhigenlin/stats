@@ -6,3 +6,8 @@ poisson-regression-example
 sources
 chapter-3
 template
+petrol-price
+exploratory-data-analysis
+converting-to-a-stationary-series
+selecting-appropriate-arima-model
+diagnostic-tests-and-assessing-model-adequacy

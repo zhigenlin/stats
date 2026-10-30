@@ -1,34 +1,152 @@
-# Test models
+---
+---
+---
 
-## Regression overview
+# Petrol price
 
-Priors
+This example uses an ARIMA time series model for weekly petrol price data over a period of about 13 years.
 
-Option 1: Unit information prior (weakly informative prior)
+```{r}
+knitr::opts_chunk$set(warning = FALSE)
+ # suppress warnings for purposes of clutter in this article
+```
 
-Option 2: g-prior
+## Exploratory data analysis
 
-## Poisson Regression example
+```{r}
+petrol.data <- read.csv("data/petrol.csv",stringsAsFactors=TRUE, header=F)
 
-Assume a Poisson probability model:
+iterations.max = 300
 
-$Y|x \sim Poisson(\theta_{x})$
+library(fpp3)
 
-$Y$: number of offspring
+n = length(petrol.data[,1])
 
-$x$: age of bird
+petrolorig <- tsibble(
+        Week = 1:n,
+        Cost = ts(petrol.data[,1]),
+        index = Week
+)
 
+petrol <- tsibble(
+        Week = yearweek(1:n),
+        Cost = ts(petrol.data[,1]),
+        index = Week
+)
 
-Poisson regression model with log-link
+petrolorig %>%
+        autoplot() +
+        labs(title = "Weekly Petrol Prices") +
+        xlab("Week") + ylab("Petrol Price")
 
-$Y|x \sim Poisson(exp(\mathbf{\beta}^T\textbf{x}))$
+# zoom in
+# petrolorig %>%
+#         slice(1:32) %>% autoplot()
 
-where
+```
 
-$logE[Y|x] = log(\theta_x) = \beta_1+\beta_2x+\beta_3x^2$.
+*Figure 1 – Plot of weekly petrol prices series*
 
-## Sources
+In Figure 1, non-constant variance is present as the variance in the period between about week 450 to week 625 seems larger than the rest of the data, particularly the period shortly after week 600. There is an upwards linear trend in the data, which a slow exponentially-decaying sample ACF plot would easily confirm.
 
-Adapted from lecture notes by Dr Bronwyn Loong for STAT7016 at ANU.
+There are no obvious cycles or seasonality. Seasonality is not clearly present even if we zoom in on the plot for a small number of weeks. In any case, even if we wanted to model seasonality for weekly data, the fact that there is a (large) non-integer amount of weeks in a year (52.2) is problematic.
 
-Reference: Hoff, Peter D. (2000). A First Course in Bayesian Statistical Methods. Springer.
+## Converting to a stationary series
+
+We will apply a mathematical transformation and first differencing to adjust for heteroskedasticity and the linear trend respectively.
+
+The *fable* package suggests that a Box-Cox transformation with $\lambda = -0.71$ is reasonable according to the *guerrero* feature. For simplicity, we will use $\lambda = -1$ instead.
+
+Let $y_t$ be the original series, then the transformed series (after a mathematical transformation and first differencing), is given by
+
+$$z_t = -(y_t^{-1} - y_{t-1}^{-1}).$$
+
+```{r}
+petrol %>% features(Cost, guerrero)
+lambda <- petrol %>%
+        features(Cost, guerrero) %>%
+        pull(lambda_guerrero)
+lvalue = round(lambda)
+
+petrolchanged <- petrol %>%
+        mutate(Cost = box_cox(Cost, lambda))
+
+# second plot
+petroldifftransf <- tsibble(
+        #Week = yearweek(1:(n-1)),
+        Week = (1:(n-1)),
+        Cost = diff(ts(petrolchanged$Cost)),
+        index = Week
+)
+
+petroldifftransf %>%
+        autoplot() +
+        labs(title = "Transformed Weekly Petrol Prices") +
+        xlab("Week") + ylab("Transformed Petrol Price")
+```
+
+*Figure 2 – Plot of transformed weekly petrol prices series*
+
+In Figure 2, we can see that the transformed series looks fairly stationary with little trend and the Box-Cox transformation has been helpful in adjusting for the non-constant variance.
+
+## Selecting appropriate ARIMA model
+
+```{r}
+z = ts(petrolchanged$Cost)
+tseries::adf.test(diff(z)[-1],k=0) # stationary
+
+petrol %>% model(mod = ARIMA(box_cox(Cost,lvalue))) %>% report()
+
+petrolchanged %>% 
+        gg_tsdisplay(difference(Cost), plot_type='partial') +
+        labs(y="Seasonally differenced")
+```
+
+*Figure 3 – Plots of sample autocorrelation and sample partial autocorrelation*
+
+The sample ACF and PACF plots in Figure 3 exceed the confidence interval boundaries are multiple points and give no particular indication that a pure AR or MA model would fit our transformed series.
+
+If we use a loop across different ARIMA models (varying degrees of AR and MA) we find that the best model according to AIC is ARIMA(2,1,3), which agrees with the model found by the order found by *fable*’s automatic ARIMA() function. Hence, we choose this model.
+
+The final model after back-transforming is
+
+$$
+y_t = \left( \frac{1}{y_{t-1}} + \underset{(0.22)}{1.35} \left( \frac{1}{y_{t-1}} - \frac{1}{y_{t-2}} \right) - \underset{(0.14)}{0.57} \left( \frac{1}{y_{t-2}} - \frac{1}{y_{t-3}} \right) - e_t + \underset{(0.22)}{0.81} e_{t-1} - \underset{(0.06)}{0.23} e_{t-2} - \underset{(0.07)}{0.11} e_{t-3} \right)^{-1},
+$$
+
+where the numbers underneath are standard errors for the parameter estimates. Note that the estimate for $\sigma^2$ is $9.3 \times 10^{-5}$.
+
+## Diagnostic tests and assessing model adequacy
+
+An augmented Dickey-Fuller test on the transformed series gives a p-value of less than 0.01, indicating that the transformed series is probably stationary.
+
+Let us now perform a Ljung-Box test for the null hypothesis that the residuals after fitting the ARIMA model are white noise.
+
+```{r}
+s = 4
+# choose based on frequency of data
+# e.g. monthly data s=12, quarterly s=4, weekly s=4 or 5
+
+seasonality = TRUE # parameter
+if (seasonality) {lag1 = 2*s} else {lag1 = 10}
+
+T1 = length(petrolchanged$Cost); threshold = T1/5
+if (lag1>threshold) {lag1 = round(threshold)}
+
+arimafit = petrol %>% model(mod = ARIMA(box_cox(Cost,lvalue)))
+dof1 = arimafit %>% coef() %>% dim() %>% first()
+
+augment(arimafit) %>%
+        features(.innov, ljung_box, lag=lag1, dof=dof1)
+```
+
+According to Hyndman and Athanasopoulos (2021), it is advisable to choose our lag to be $\min(10, n/5 \approx 140) = 10$ for this test, where $n$ is the number of observations in our time series. Hence, we choose our lag to be 10 and we have 5 degrees of freedom (for two AR parameters and 3 MA parameters). The resulting p-value is 0.542, well above any typical significance level such as 0.05. Therefore, we conclude that there is insufficient evidence to reject the null hypothesis that the residuals after fitting the ARIMA(2,1,3) model are white noise.
+
+```{r}
+qplot(sample = .innov, data = augment(arimafit)) + stat_qq_line() +
+        labs(title = "Quantile-Quantile Plot") + xlab("Gaussian Quantiles") + ylab("Residuals") + theme(aspect.ratio=1)
+```
+
+*Figure 4 – Quantile-Quantile Plot*
+
+The inverse transformation followed by differencing seemed to produce a stationary time series. The Ljung-Box p-value suggested that ARIMA(2,1,3) was a good fit, while the Q-Q plot casts doubt on whether prediction intervals based on the normal distribution can be trusted.
