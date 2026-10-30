@@ -30,7 +30,7 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="test-models.html"/>
+<link rel="prev" href="petrol-price.html"/>
 
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
@@ -142,15 +142,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <li class="divider"></li>
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Overview</a></li>
-<li class="chapter" data-level="2" data-path="test-models.html"><a href="test-models.html"><i class="fa fa-check"></i><b>2</b> Test models</a>
+<li class="chapter" data-level="2" data-path="petrol-price.html"><a href="petrol-price.html"><i class="fa fa-check"></i><b>2</b> Petrol price</a>
 <ul>
-<li class="chapter" data-level="2.1" data-path="test-models.html"><a href="test-models.html#regression-overview"><i class="fa fa-check"></i><b>2.1</b> Regression overview</a></li>
-<li class="chapter" data-level="2.2" data-path="test-models.html"><a href="test-models.html#poisson-regression-example"><i class="fa fa-check"></i><b>2.2</b> Poisson Regression example</a></li>
-<li class="chapter" data-level="2.3" data-path="test-models.html"><a href="test-models.html#sources"><i class="fa fa-check"></i><b>2.3</b> Sources</a></li>
+<li class="chapter" data-level="2.1" data-path="petrol-price.html"><a href="petrol-price.html#exploratory-data-analysis"><i class="fa fa-check"></i><b>2.1</b> Exploratory data analysis</a></li>
+<li class="chapter" data-level="2.2" data-path="petrol-price.html"><a href="petrol-price.html#converting-to-a-stationary-series"><i class="fa fa-check"></i><b>2.2</b> Converting to a stationary series</a></li>
+<li class="chapter" data-level="2.3" data-path="petrol-price.html"><a href="petrol-price.html#selecting-appropriate-arima-model"><i class="fa fa-check"></i><b>2.3</b> Selecting appropriate ARIMA model</a></li>
+<li class="chapter" data-level="2.4" data-path="petrol-price.html"><a href="petrol-price.html#diagnostic-tests-and-assessing-model-adequacy"><i class="fa fa-check"></i><b>2.4</b> Diagnostic tests and assessing model adequacy</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="chapter-3.html"><a href="chapter-3.html"><i class="fa fa-check"></i><b>3</b> Chapter 3</a>
 <ul>
-<li class="chapter" data-level="3.1" data-path="chapter-3.html"><a href="chapter-3.html#template"><i class="fa fa-check"></i><b>3.1</b> Template</a></li>
+<li class="chapter" data-level="3.1" data-path="chapter-3.html"><a href="chapter-3.html#regression-overview"><i class="fa fa-check"></i><b>3.1</b> Regression overview</a></li>
+<li class="chapter" data-level="3.2" data-path="chapter-3.html"><a href="chapter-3.html#poisson-regression-example"><i class="fa fa-check"></i><b>3.2</b> Poisson Regression example</a></li>
+<li class="chapter" data-level="3.3" data-path="chapter-3.html"><a href="chapter-3.html#sources"><i class="fa fa-check"></i><b>3.3</b> Sources</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -173,9 +176,27 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="chapter-3" class="section level1 hasAnchor" number="3">
 <h1><span class="header-section-number">Chapter 3</span> Chapter 3<a href="chapter-3.html#chapter-3" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<div id="template" class="section level2 hasAnchor" number="3.1">
-<h2><span class="header-section-number">3.1</span> Template<a href="chapter-3.html#template" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Template</p>
+<div id="regression-overview" class="section level2 hasAnchor" number="3.1">
+<h2><span class="header-section-number">3.1</span> Regression overview<a href="chapter-3.html#regression-overview" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Priors</p>
+<p>Option 1: Unit information prior (weakly informative prior)</p>
+<p>Option 2: g-prior</p>
+</div>
+<div id="poisson-regression-example" class="section level2 hasAnchor" number="3.2">
+<h2><span class="header-section-number">3.2</span> Poisson Regression example<a href="chapter-3.html#poisson-regression-example" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Assume a Poisson probability model:</p>
+<p><span class="math inline">\(Y|x \sim Poisson(\theta_{x})\)</span></p>
+<p><span class="math inline">\(Y\)</span>: number of offspring</p>
+<p><span class="math inline">\(x\)</span>: age of bird</p>
+<p>Poisson regression model with log-link</p>
+<p><span class="math inline">\(Y|x \sim Poisson(exp(\mathbf{\beta}^T\textbf{x}))\)</span></p>
+<p>where</p>
+<p><span class="math inline">\(logE[Y|x] = log(\theta_x) = \beta_1+\beta_2x+\beta_3x^2\)</span>.</p>
+</div>
+<div id="sources" class="section level2 hasAnchor" number="3.3">
+<h2><span class="header-section-number">3.3</span> Sources<a href="chapter-3.html#sources" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Adapted from lecture notes by Dr Bronwyn Loong for STAT7016 at ANU.</p>
+<p>Reference: Hoff, Peter D. (2000). A First Course in Bayesian Statistical Methods. Springer.</p>
 
 </div>
 </div>
@@ -184,7 +205,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           </div>
         </div>
       </div>
-<a href="test-models.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="petrol-price.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 
     </div>
   </div>
