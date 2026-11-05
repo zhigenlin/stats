@@ -1,4 +1,3 @@
-tab:unnamed-chunk-3
 overview
 petrol-price
 exploratory-data-analysis
@@ -7,9 +6,20 @@ selecting-appropriate-arima-model
 choose-between-models-using-aic
 diagnostic-tests-and-assessing-model-adequacy
 references
-chickenpox-time-series
+insurance-redlining
 introduction
+setting-up-the-data
+the-observations
+the-variables
+standard-linear-model
 exploratory-data-analysis-1
+variable-selection
+model-diagnostics
+added-variable-plots-for-race-and-age
+conclusion
+chickenpox-time-series
+introduction-1
+exploratory-data-analysis-2
 methodology
 initial-setup
 order-selection
