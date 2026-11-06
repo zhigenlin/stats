@@ -94,7 +94,7 @@ We proceed to fit a linear model to the data using the standard lm function in R
 
 ### 3.1 Exploratory Data Analysis
 
-```{r pairs-plot-insurance}
+```{r insurance-pairs-plot, cache=FALSE}
 pairs(cbind(AcceptRate,covar),main="Pairs Plot of Insurance Data",panel=function(x,y){points(x,y);lines(lowess(x,y))})
 ```
 *Figure 3 - Pairs plot of insurance data*
