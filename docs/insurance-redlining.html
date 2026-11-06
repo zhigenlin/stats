@@ -23,7 +23,7 @@
 <meta name="author" content="" />
 
 
-<meta name="date" content="2026-11-05" />
+<meta name="date" content="2026-11-06" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -135,7 +135,6 @@
             <section class="normal" id="section-">
 <div id="insurance-redlining" class="section level1 hasAnchor" number="3">
 <h1><span class="header-section-number">Chapter 3</span> Insurance redlining<a href="insurance-redlining.html#insurance-redlining" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>Written: 26 Oct 2020</p>
 <div id="introduction" class="section level2 hasAnchor" number="3.1">
 <h2><span class="header-section-number">3.1</span> 1.0 Introduction<a href="insurance-redlining.html#introduction" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>In this report, we analyse Chicago insurance data collected between December 1977 and February 1978. Insurance companies are not allowed to discriminate based on race or age of housing, called ‘redlining’. Our primary interest is to study whether they did discriminate based on these factors in Chicago after taking other factors into account. If the extent of redlining is significant, the state could pursue a case to reprimand the behaviour of the Chicago insurance industry, or they could investigate particular insurance companies more deeply.</p>
@@ -177,20 +176,25 @@ where <span class="math inline">\(\Phi^{-1}\)</span> is the inverse of the cumul
 <p>We proceed to fit a linear model to the data using the standard lm function in R. Our strategy will be to fit the best possible model with Accept as the response and fire, theft and income as the covariates. Then, we will use added variable plots to check if race or age is relevant to the regression.</p>
 <div id="exploratory-data-analysis-1" class="section level3 hasAnchor" number="3.3.1">
 <h3><span class="header-section-number">3.3.1</span> 3.1 Exploratory Data Analysis<a href="insurance-redlining.html#exploratory-data-analysis-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p><em>Figure 3 - Pairs plot of insurance data</em></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-3-1.png" alt="" width="672" />
+<em>Figure 3 - Pairs plot of insurance data</em></p>
 <p>Prior to fitting our model, we will make a few plots using our initial covariates. We will use AcceptRate rather than Accept in these plots as they are roughly distributed in the same way, but AcceptRate is always between 0 and 1, which will be more interpretable on the vertical axis.</p>
 <p>The pairs plot of our initial covariates and AcceptRate is shown in Figure 3. As expected, we see some clear correlations between AcceptRate and Fire, and AcceptRate and Income, which are negative and positive respectively. Theft alone appears to be a poor determinant of AcceptRate. There also does not appear to be a multicollinearity problem between the covariates. Similarly, we can confirm that there are no multicollinearity issues between any of race, fire, theft, age and income in a larger pairs plot.</p>
-<p><em>Figure 4 – Symbol coplot of AcceptRate against Fire</em></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-4-1.png" alt="" width="672" />
+<em>Figure 4 – Symbol coplot of AcceptRate against Fire</em></p>
 <p>We can investigate the relationship between these variables more closely using a symbol co-plot as in Figure 4.</p>
 <p>The plot has been colour-coded according to whether a zip code has minority races comprising over 50% of the zip code population. It should be noted that two-thirds of the zip codes had a majority Caucasian population.</p>
 <p>We can see a clustering of points on the top left, with low fire risk, high AcceptRate, high income, relatively low theft and high proportion of Caucasians. Theft does not appear to play a major factor as we discussed earlier, although there is an observation with high theft and high AcceptRate on the far right. As before, we see a negative correlation between fire and AcceptRate and a positive correlation between income and AcceptRate. There is a thin observation in the middle with unusually low theft, but fire risk may be dragging its AcceptRate down. Overall, there is some evidence that race may be a factor in AcceptRate, but there may well be a confounding factor that explains what we are seeing. In fact, we achieve quite a similar plot if we colour-code for above or below the median percentage for age.</p>
-<p><em>Figure 5 - Added variable plot for Theft in a regression to explain Accept</em></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-5-1.png" alt="" width="672" />
+<em>Figure 5 - Added variable plot for Theft in a regression to explain Accept</em></p>
 <p>One thing to investigate is whether theft is relevant in a model that includes fire and income since evidence of theft’s explanatory power was not convincing in Figures 3 and 4.</p>
 <p>We create an added variable plot for theft in Figure 5. Note that we use Accept rather than AcceptRate now since we will be fitting using Accept. We will use Accept from now onwards.</p>
 <p>There is no clear linear pattern in Figure 5, so we conclude that theft is probably not relevant for this model. We can also use principal components analysis on the covariates to determine that over 90% of the variation information in the covariates is contained within two variables, so it is likely that one of fire, theft or income is not necessary.</p>
 </div>
 <div id="variable-selection" class="section level3 hasAnchor" number="3.3.2">
 <h3><span class="header-section-number">3.3.2</span> 3.2 Variable Selection<a href="insurance-redlining.html#variable-selection" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-6-1.png" alt="" width="672" />
+<img src="bookdownproj_files/figure-html/unnamed-chunk-7-1.png" alt="" width="672" /></p>
 <p>When designing a model for prediction, it is known that parsimonious models tend to perform the best. However, our purpose here is slightly different. We want to lean slightly more towards explaining Accept as much as possible using only fire, theft and income.</p>
 <p>Then if we can show that race or age is still relevant, the argument that redlining is occurring may be more convincing to a legal authority.</p>
 <p>We employ exhaustive variable selection including all squared and interaction terms. Some results are shown in Figure 6. We can see that the best model according to Mallow’s <span class="math inline">\(C_p\)</span> criterion should have three variables, while according to adjusted <span class="math inline">\(R^{2}\)</span>, the best model should have five variables (leading to an adjusted <span class="math inline">\(R^{2}\)</span> of 92.8%).</p>
@@ -218,9 +222,11 @@ Accept = \Phi^{-1}\left(
 \]</span>
 <em>Equation 1 – Model with fire, income, fire2 and the interaction between fire and income fit using the ‘lm’ function in R</em></p>
 <p>Notably, the adjusted <span class="math inline">\(R^{2}\)</span> of this regression is quite good (0.9263) and the p-values for the coefficients are all significant at the 5% level except income and the interaction between fire and income at 0.42 and 0.06 respectively. The coefficient for fire2 is quite small, but we gave our reasoning in the previous section as to why we may want to keep slightly more covariates in the model rather than seeking the most parsimonious model.</p>
-<p><em>Figure 7 - Residual plot</em></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-8-1.png" alt="" width="672" />
+<em>Figure 7 - Residual plot</em></p>
 <p>In Figure 7, we find that the mean of residuals is approximately zero in the residuals plot, so the linearity assumption is fine. The independence of errors assumption is satisfied, as there is also no distinguishable pattern, although there is a clump of points to the right, which correspond to the zip codes with zero involuntary market activity. Although omitted, in the absolute residual plot, we see a very desirable flat LOWESS fit.</p>
-<p><em>Figure 8 – Q-Q, standardised residuals, Cook’s distance and leverage points</em></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-9-1.png" alt="" width="672" />
+<em>Figure 8 – Q-Q, standardised residuals, Cook’s distance and leverage points</em></p>
 <p>In Figure 8, from the Q-Q plot, we find that the data has possible extremely slight positive skew, but the normality assumption is essentially satisfied. There looks to be one observation that falls dramatically off the Q-Q line, which is observation 2.</p>
 <p>From the Cook’s distance plot, we can see that the largest Cook’s distances correspond to observations 2, 3 and 13 and 18, though none of them exceed 1 (which is often taken as a heuristic cut-off). We will investigate these four observations further in the two plots on the right side.</p>
 <p>In the absolute standardised residuals plot, a conservative cut-off is approximately at 2, so observations 2 and 13 may be a concern. In the leverage plot, observations 3 and 13 have high leverage. Hence, we may consider removing some or all observations 2, 3 and 13 and 18.</p>
@@ -229,7 +235,9 @@ Accept = \Phi^{-1}\left(
 </div>
 <div id="added-variable-plots-for-race-and-age" class="section level2 hasAnchor" number="3.4">
 <h2><span class="header-section-number">3.4</span> 4.0 Added Variable Plots for Race and Age<a href="insurance-redlining.html#added-variable-plots-for-race-and-age" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p><em>Figure 9 – Added variable plots for race and age</em></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-10-1.png" alt="" width="672" />
+<img src="bookdownproj_files/figure-html/unnamed-chunk-11-1.png" alt="" width="672" />
+<em>Figure 9 – Added variable plots for race and age</em></p>
 <p>We can finally set out to study whether race or age is relevant given the model we have previously fitted. The plots in Figure 9 show that both race or age are not relevant in a model that accounts for fire, fire2, income and the interaction term between fire and income. There is no strong apparent pattern in either plot. The plot for race might a slight linear relationship, but the correlation is low (about 30% in magnitude). Additionally, a straight-line fit either directly in the plot or in a regression with the four chosen variables plus race does not output a significant p-value at the 5% significance level (the p-values are 0.084 and 0.107 respectively).</p>
 <p>It should be noted that these plots were created using the lm function in R. If, however, we fit the added variable plot for race using robust linear regression (rlm), the straight-line fit actually does become significant at the 5% level.</p>
 <p>However, it quickly returns to being insignificant once we remove the high-leverage observation 3 from our dataset, implying that the relationship is not important.</p>

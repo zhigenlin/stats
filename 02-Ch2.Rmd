@@ -1,19 +1,13 @@
 # Petrol price
 
-Written: 26/05/2021
+(Note: In the article, there is a known error where ARIMA(2,1,3) is chosen despite not having the lowest AIC. In addition, AICc may be more appropriate over AIC. Looking for outliers in the initial time series is also omitted.)
 
-(Note: In the article, there is a known error where ARIMA(2,1,3) is chosen despite not having the lowest AIC. In addition, AICc may be more appropriate over AIC. Studying for outliers in the initial time series is also omitted.)
+```{r}
+knitr::opts_chunk$set(warning = FALSE)
+ # Suppress warnings
+```
 
 This article uses an ARIMA time series model for weekly petrol price data over a period of about 13 years.
-
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(
-  include = FALSE,
-  message = FALSE,
-  warning = FALSE,
-  error   = FALSE
-)
-```
 
 ## Exploratory data analysis
 
@@ -99,7 +93,7 @@ In Figure 2, we can see that the transformed series looks fairly stationary with
 z = ts(petrolchanged$Cost)
 tseries::adf.test(diff(z)[-1],k=0) # stationary
 
-petrol %>% model(mod = ARIMA(box_cox(Cost,lvalue))) %>% report()
+petrol %>% fabletools::model(mod = ARIMA(box_cox(Cost,lvalue))) %>% fabletools::report()
 
 petrolchanged %>% 
         gg_tsdisplay(difference(Cost), plot_type='partial') +

@@ -1,6 +1,9 @@
 # Insurance redlining
 
-Written: 26 Oct 2020
+```{r}
+knitr::opts_chunk$set(warning = FALSE)
+ # Suppress warnings
+```
 
 ```{r}
 chicago.data = read.csv("data/chicago.csv")
@@ -91,7 +94,7 @@ We proceed to fit a linear model to the data using the standard lm function in R
 
 ### 3.1 Exploratory Data Analysis
 
-```{r}
+```{r pairs-plot-insurance}
 pairs(cbind(AcceptRate,covar),main="Pairs Plot of Insurance Data",panel=function(x,y){points(x,y);lines(lowess(x,y))})
 ```
 *Figure 3 - Pairs plot of insurance data*

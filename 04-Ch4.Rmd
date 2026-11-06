@@ -1,6 +1,9 @@
 # Chickenpox Time Series
 
-Written: 04 Nov 2021
+```{r}
+knitr::opts_chunk$set(warning = FALSE)
+ # Suppress warnings
+```
 
 ## Introduction
 

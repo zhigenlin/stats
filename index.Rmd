@@ -1,6 +1,6 @@
 --- 
 title: "Statistics"
-author: ""
+author: ''
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
 ---
@@ -11,32 +11,10 @@ This website will feature some worked examples from different areas of statistic
 
 You can also check out my larger articles on [my website](https://zhigenlin.com).
 
-Plotting example in R.
-
-1. Create data.
-
-```{r}
-set.seed(1)
-x = rnorm(10)
-y = rnorm(10)
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+  echo = FALSE,
+  message = FALSE,
+  warning = FALSE
+)
 ```
-
-2. Plot.
-
-```{r}
-plot(x,y)
-```
-
-Example of a table
-
-```{r echo = FALSE, results='asis'}
-library(knitr)
-kable(mtcars[1:5,], caption = "A knitr kable.")
-```
-
-Original
-
-```{r}
-mtcars[1:5,]
-```
-
