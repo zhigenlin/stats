@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 6 Methodology | Chickenpox Time Series</title>
+  <meta name="description" content="Chapter 6 Methodology | Chickenpox Time Series" />
+  <meta name="generator" content="bookdown 0.48 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 6 Methodology | Chickenpox Time Series" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 6 Methodology | Chickenpox Time Series" />
+  
+  
+  
+
+<meta name="author" content="" />
+
+
+<meta name="date" content="2026-11-08" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="eda.html"/>
+<link rel="next" href="results.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Stats</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Overview</a></li>
+<li class="chapter" data-level="2" data-path="petrol-price.html"><a href="petrol-price.html"><i class="fa fa-check"></i><b>2</b> Petrol price</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="petrol-price.html"><a href="petrol-price.html#exploratory-data-analysis"><i class="fa fa-check"></i><b>2.1</b> Exploratory data analysis</a></li>
+<li class="chapter" data-level="2.2" data-path="petrol-price.html"><a href="petrol-price.html#converting-to-a-stationary-series"><i class="fa fa-check"></i><b>2.2</b> Converting to a stationary series</a></li>
+<li class="chapter" data-level="2.3" data-path="petrol-price.html"><a href="petrol-price.html#selecting-appropriate-arima-model"><i class="fa fa-check"></i><b>2.3</b> Selecting appropriate ARIMA model</a></li>
+<li class="chapter" data-level="2.4" data-path="petrol-price.html"><a href="petrol-price.html#choose-between-models-using-aic"><i class="fa fa-check"></i><b>2.4</b> Choose between models using AIC</a></li>
+<li class="chapter" data-level="2.5" data-path="petrol-price.html"><a href="petrol-price.html#diagnostic-tests-and-assessing-model-adequacy"><i class="fa fa-check"></i><b>2.5</b> Diagnostic tests and assessing model adequacy</a></li>
+<li class="chapter" data-level="2.6" data-path="petrol-price.html"><a href="petrol-price.html#references"><i class="fa fa-check"></i><b>2.6</b> References</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="insurance-redlining.html"><a href="insurance-redlining.html"><i class="fa fa-check"></i><b>3</b> Insurance redlining</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="insurance-redlining.html"><a href="insurance-redlining.html#introduction"><i class="fa fa-check"></i><b>3.1</b> Introduction</a></li>
+<li class="chapter" data-level="3.2" data-path="insurance-redlining.html"><a href="insurance-redlining.html#setting-up-the-data"><i class="fa fa-check"></i><b>3.2</b> Setting up the data</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="insurance-redlining.html"><a href="insurance-redlining.html#the-observations"><i class="fa fa-check"></i><b>3.2.1</b> The observations</a></li>
+<li class="chapter" data-level="3.2.2" data-path="insurance-redlining.html"><a href="insurance-redlining.html#the-variables"><i class="fa fa-check"></i><b>3.2.2</b> The variables</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="insurance-redlining.html"><a href="insurance-redlining.html#standard-linear-model"><i class="fa fa-check"></i><b>3.3</b> Standard Linear Model</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="insurance-redlining.html"><a href="insurance-redlining.html#exploratory-data-analysis-1"><i class="fa fa-check"></i><b>3.3.1</b> Exploratory Data Analysis</a></li>
+<li class="chapter" data-level="3.3.2" data-path="insurance-redlining.html"><a href="insurance-redlining.html#variable-selection"><i class="fa fa-check"></i><b>3.3.2</b> Variable Selection</a></li>
+<li class="chapter" data-level="3.3.3" data-path="insurance-redlining.html"><a href="insurance-redlining.html#model-diagnostics"><i class="fa fa-check"></i><b>3.3.3</b> Model Diagnostics</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="insurance-redlining.html"><a href="insurance-redlining.html#added-variable-plots-for-race-and-age"><i class="fa fa-check"></i><b>3.4</b> Added Variable Plots for Race and Age</a></li>
+<li class="chapter" data-level="3.5" data-path="insurance-redlining.html"><a href="insurance-redlining.html#conclusion"><i class="fa fa-check"></i><b>3.5</b> Conclusion</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>4</b> Introduction</a></li>
+<li class="chapter" data-level="5" data-path="eda.html"><a href="eda.html"><i class="fa fa-check"></i><b>5</b> Exploratory data analysis</a></li>
+<li class="chapter" data-level="6" data-path="methodology.html"><a href="methodology.html"><i class="fa fa-check"></i><b>6</b> Methodology</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="methodology.html"><a href="methodology.html#initial-setup"><i class="fa fa-check"></i><b>6.1</b> Initial setup</a></li>
+<li class="chapter" data-level="6.2" data-path="methodology.html"><a href="methodology.html#order-selection"><i class="fa fa-check"></i><b>6.2</b> Order selection</a></li>
+<li class="chapter" data-level="6.3" data-path="methodology.html"><a href="methodology.html#prior-posterior"><i class="fa fa-check"></i><b>6.3</b> Prior and posterior distributions</a>
+<ul>
+<li class="chapter" data-level="6.3.1" data-path="methodology.html"><a href="methodology.html#sampling-model"><i class="fa fa-check"></i><b>6.3.1</b> Sampling model</a></li>
+<li class="chapter" data-level="6.3.2" data-path="methodology.html"><a href="methodology.html#priors"><i class="fa fa-check"></i><b>6.3.2</b> Priors</a></li>
+<li class="chapter" data-level="6.3.3" data-path="methodology.html"><a href="methodology.html#conditional-posteriors"><i class="fa fa-check"></i><b>6.3.3</b> Conditional posterior distributions</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="methodology.html"><a href="methodology.html#mcmc"><i class="fa fa-check"></i><b>6.4</b> Markov chain Monte Carlo algorithm</a></li>
+<li class="chapter" data-level="6.5" data-path="methodology.html"><a href="methodology.html#ppc"><i class="fa fa-check"></i><b>6.5</b> Posterior predictive checks</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="results.html"><a href="results.html"><i class="fa fa-check"></i><b>7</b> Results</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="results.html"><a href="results.html#convergence"><i class="fa fa-check"></i><b>7.1</b> Convergence and posterior predictive checks</a>
+<ul>
+<li class="chapter" data-level="7.1.1" data-path="results.html"><a href="results.html#budapest"><i class="fa fa-check"></i><b>7.1.1</b> Budapest series</a></li>
+<li class="chapter" data-level="7.1.2" data-path="results.html"><a href="results.html#pest"><i class="fa fa-check"></i><b>7.1.2</b> Pest series</a></li>
+<li class="chapter" data-level="7.1.3" data-path="results.html"><a href="results.html#heves"><i class="fa fa-check"></i><b>7.1.3</b> Heves series</a></li>
+<li class="chapter" data-level="7.1.4" data-path="results.html"><a href="results.html#somogy"><i class="fa fa-check"></i><b>7.1.4</b> Somogy series</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="results.html"><a href="results.html#residual-checks"><i class="fa fa-check"></i><b>7.2</b> Residual checks and other non-Bayesian diagnostics</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="discussion.html"><a href="discussion.html"><i class="fa fa-check"></i><b>8</b> Discussion</a></li>
+<li class="chapter" data-level="9" data-path="insurance-redlining.html"><a href="insurance-redlining.html#conclusion"><i class="fa fa-check"></i><b>9</b> Conclusion</a></li>
+<li class="chapter" data-level="10" data-path="appendices.html"><a href="appendices.html"><i class="fa fa-check"></i><b>10</b> Appendices</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="appendices.html"><a href="appendices.html#r-packages"><i class="fa fa-check"></i><b>10.1</b> R packages</a></li>
+<li class="chapter" data-level="10.2" data-path="appendices.html"><a href="appendices.html#reference-list"><i class="fa fa-check"></i><b>10.2</b> Reference List</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Chickenpox Time Series</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="methodology" class="section level1 hasAnchor" number="6">
+<h1><span class="header-section-number">Chapter 6</span> Methodology<a href="methodology.html#methodology" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="initial-setup" class="section level2 hasAnchor" number="6.1">
+<h2><span class="header-section-number">6.1</span> Initial setup<a href="methodology.html#initial-setup" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>This project will use R to fit Bayesian models (R Core Team, 2021). The interface used to write in R is RStudio (RStudio Team, 2021). The Stan programming language is indirectly used (Carpenter et al., 2017). Please see Appendices <a href="#appendix-packages"><strong>??</strong></a> and <a href="#appendix-code"><strong>??</strong></a> for R packages used and R code respectively.</p>
+<p>The aggregation into monthly data was done computationally using the fpp3 package in R, which automatically loads some packages in the tidyverse collection of packages (Hyndman, 2021). This reduces the number of observations to 120 months’ worth of case counts, of which we will take 108 as training data and 12 as test data.</p>
+<p>Finally, as discussed in Hyndman and Athanasopoulos (2021), fpp3 is used to determine the value for <span class="math inline">\(\lambda\)</span> in a Box-Cox transformation, in order to adjust for heteroskedasticity in the time series. Assuming the untransformed monthly series is <span class="math inline">\((x_t)\)</span>, this transformation is achieved for non-zero <span class="math inline">\(\lambda\)</span> via the formula <span class="math inline">\(y_t = (x_t^\lambda - 1)/\lambda\)</span>.</p>
+<p>Central to our methodology is the R package bayesforecast, which interfaces with the programming language Stan, to fit Bayesian time series models (Alonzo &amp; Cruz, 2020).</p>
+</div>
+<div id="order-selection" class="section level2 hasAnchor" number="6.2">
+<h2><span class="header-section-number">6.2</span> Order selection<a href="methodology.html#order-selection" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>bayesforecast used for ARIMA order selection, the algorithm for which is described below. Note that the process compares the BIC of frequentist fittings to find the preferred order.</p>
+<p>Firstly, the following constraints are made for a multiplicative seasonal ARIMA model</p>
+<p><span class="math display">\[
+y_t \sim SARIMA(p,d,q)(P,D,Q)_{12}
+\]</span></p>
+<ul>
+<li><span class="math inline">\(p + q + P + Q \leq 6\)</span></li>
+<li><span class="math inline">\(d + D \leq 2\)</span></li>
+<li><span class="math inline">\(0 \leq p \leq 5, 0 \leq d \leq 2, 0 \leq q \leq 5\)</span></li>
+<li><span class="math inline">\(0 \leq P \leq 2, 0 \leq D \leq 2, 0 \leq Q \leq 2\)</span></li>
+</ul>
+<p>Steps for model selection, with exhaustive search and approximations off (<code>stepwise=FALSE</code>, <code>approximation=FALSE</code>), are based on the algorithm by Hyndman and Khandakar (2008). The first two steps are used to ensure stationarity.</p>
+<ol style="list-style-type: decimal">
+<li>Use Kwiatkowski–Phillips–Schmidt–Shin test(s) to determine <span class="math inline">\(d\)</span>.</li>
+<li>Use the period of an STL decomposition to determine <span class="math inline">\(D\)</span>.</li>
+<li>Exhaustively check the BIC of all possible models within the constraints to determine the preferred <span class="math inline">\(\{p,d,q,P,D,Q\}\)</span>.</li>
+</ol>
+</div>
+<div id="prior-posterior" class="section level2 hasAnchor" number="6.3">
+<h2><span class="header-section-number">6.3</span> Prior and posterior distributions<a href="methodology.html#prior-posterior" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="sampling-model" class="section level3 hasAnchor" number="6.3.1">
+<h3><span class="header-section-number">6.3.1</span> Sampling model<a href="methodology.html#sampling-model" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>As previously, take <span class="math inline">\((x_t)\)</span> as the untransformed monthly series. After the Box-Cox transformation, we have
+<span class="math inline">\(y_t = (x_t^\lambda - 1)/\lambda\)</span>.</p>
+<p>We can determine from our fittings in Section <a href="methodology.html#order-selection">6.2</a> that the maximum order of coefficients for the models we need to fit for our sampling model is</p>
+<p><span class="math display">\[y_t | \boldsymbol{\gamma} \sim \text{SARIMA}(1,0,2)(2,1,2)_{12}\]</span></p>
+<p>where <span class="math inline">\(\boldsymbol{\gamma}\)</span> represents the parameters of the model.</p>
+<p>Hence, we can simply determine the posterior distribution assuming this model, but all of the fitted models will have lower order coefficients than this one.</p>
+<p>Our sampling model is equivalently expressed as described below.</p>
+<p><span class="math display">\[
+(1-\phi B)(1-\Phi_1 B^{12}-\Phi_2 B^{24})(1-B^{12})(y_t-\mu)
+=
+(1+\theta_1 B+\theta_2 B^2)(1+\Theta_1 B^{12}+\Theta_2 B^{24})\epsilon_t
+\]</span></p>
+<p>Therefore,</p>
+<p><span class="math display" id="eq:sarima">\[\begin{equation}
+\begin{aligned}
+y_t ={}&amp; \mu + \epsilon_t + \theta_1\epsilon_{t-1} + \theta_2\epsilon_{t-2}
++ \Theta_1\epsilon_{t-12} + \theta_1\Theta_1\epsilon_{t-13} \\
+&amp;+ \theta_2\Theta_1\epsilon_{t-14} + \Theta_2\epsilon_{t-24}
++ \theta_1\Theta_2\epsilon_{t-25} + \theta_2\Theta_2\epsilon_{t-26} \\
+&amp;+ \phi(y_{t-1}-\mu) + (1+\Phi_1)(y_{t-12}-\mu)
+- (\phi+\phi\Phi_1)(y_{t-13}-\mu) \\
+&amp;+ (\Phi_2-\Phi_1)(y_{t-24}-\mu)
++ (\phi\Phi_1-\phi\Phi_2)(y_{t-25}-\mu)
+- \Phi_2(y_{t-36}-\mu) \\
+&amp;+ \phi\Phi_2(y_{t-37}-\mu),
+\qquad \epsilon_t \mid \sigma \sim N(0, sd=\sigma).
+\end{aligned}
+\tag{6.1}
+\end{equation}\]</span></p>
+<p>Take <span class="math inline">\(\epsilon_{11} = \cdots = \epsilon_{36} = 0\)</span>.</p>
+<p>Hence, the likelihood for our sampling model is given by</p>
+<p><span class="math display">\[
+\begin{aligned}
+y_t \mid \{&amp;\mu, \sigma, \phi, \Phi_1, \Phi_2, \theta_1, \theta_2,
+\Theta_1, \Theta_2, \\
+&amp;\epsilon_t, \epsilon_{t-1}, \epsilon_{t-2},
+\epsilon_{t-13}, \epsilon_{t-14}, \epsilon_{t-24},
+\epsilon_{t-25}, \epsilon_{t-26}, \\
+&amp;y_{t-1}, y_{t-12}, y_{t-13}, y_{t-24}, y_{t-25},
+y_{t-36}, y_{t-37}, y_1, \ldots, y_{36}\}
+\sim N(*, sd=\sigma)
+\end{aligned}
+\]</span></p>
+<p>where <span class="math inline">\(*\)</span> is the expression on the right-hand side of Equation <a href="methodology.html#eq:sarima">(6.1)</a> and <span class="math inline">\(t = 37, \ldots, 108\)</span>. (In ARIMA models, the sampling model is assumed to be normal.)</p>
+<p>Define</p>
+<p><span class="math display" id="eq:yhat">\[\begin{equation}
+\begin{aligned}
+\widehat{y}_t ={}&amp; \mu + E[\epsilon_t] + \theta_1\epsilon_{t-1} + \theta_2\epsilon_{t-2}
++ \Theta_1\epsilon_{t-12} + \theta_1\Theta_1\epsilon_{t-13} \\
+&amp;+ \theta_2\Theta_1\epsilon_{t-14} + \Theta_2\epsilon_{t-24}
++ \theta_1\Theta_2\epsilon_{t-25} + \theta_2\Theta_2\epsilon_{t-26} \\
+&amp;+ \phi(y_{t-1}-\mu) + (1+\Phi_1)(y_{t-12}-\mu)
+- (\phi+\phi\Phi_1)(y_{t-13}-\mu) \\
+&amp;+ (\Phi_2-\Phi_1)(y_{t-24}-\mu)
++ (\phi\Phi_1-\phi\Phi_2)(y_{t-25}-\mu)
+- \Phi_2(y_{t-36}-\mu) \\
+&amp;+ \phi\Phi_2(y_{t-37}-\mu) \\[1em]
+={}&amp; \mu + \theta_1\epsilon_{t-1} + \theta_2\epsilon_{t-2}
++ \Theta_1\epsilon_{t-12} + \theta_1\Theta_1\epsilon_{t-13} \\
+&amp;+ \theta_2\Theta_1\epsilon_{t-14} + \Theta_2\epsilon_{t-24}
++ \theta_1\Theta_2\epsilon_{t-25} + \theta_2\Theta_2\epsilon_{t-26} \\
+&amp;+ \phi(y_{t-1}-\mu) + (1+\Phi_1)(y_{t-12}-\mu)
+- (\phi+\phi\Phi_1)(y_{t-13}-\mu) \\
+&amp;+ (\Phi_2-\Phi_1)(y_{t-24}-\mu)
++ (\phi\Phi_1-\phi\Phi_2)(y_{t-25}-\mu)
+- \Phi_2(y_{t-36}-\mu) \\
+&amp;+ \phi\Phi_2(y_{t-37}-\mu).
+\end{aligned}
+\tag{6.2}
+\end{equation}\]</span></p>
+<p>At iteration <span class="math inline">\(t\)</span> of our algorithm, we will generate <span class="math inline">\(\epsilon_t\)</span> from
+<span class="math inline">\(\epsilon_t \mid \sigma \sim N(0, sd = \sigma)\)</span> iid for <span class="math inline">\(t = 37, \ldots, 108\)</span>.
+However, for any iteration prior iteration <span class="math inline">\(n = 1, \ldots, t\)</span> set
+<span class="math inline">\(\epsilon_n = y_n - \widehat{y}_n\)</span>, as defined in Equation <a href="methodology.html#eq:yhat">(6.2)</a>.</p>
+</div>
+<div id="priors" class="section level3 hasAnchor" number="6.3.2">
+<h3><span class="header-section-number">6.3.2</span> Priors<a href="methodology.html#priors" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>We do not have any strong information or intuition on the priors, so we set priors that are considered weakly informative for the scale of typical ARIMA coefficients (Stan Development Team, 2021).</p>
+<ul>
+<li><p><span class="math inline">\(\mu\ \sim\ N(mu = 0,\ sd = 10)\)</span></p></li>
+<li><p><span class="math inline">\(\sigma\ \sim\ Half\ Cauchy(mu = 0,\ sd = 5),\ \ \ \ \ \ \sigma &gt; 0\)</span></p></li>
+<li><p><span class="math inline">\(\phi\ \sim\ N(0,\ 2)\)</span></p></li>
+<li><p><span class="math inline">\(\Phi_{j}\ \sim\ N(0,\ 2)\ iid,\ \ \ \ \ j = 1,2\)</span></p></li>
+<li><p><span class="math inline">\(\theta_{k}\ \sim\ N(0,\ 2)\ iid,\ \ \ \ \ k = 1,2\)</span></p></li>
+<li><p><span class="math inline">\(\Theta_{l}\ \sim\ N(0,\ 2)\ iid,\ \ \ \ \ \ l = 1,2\)</span></p></li>
+</ul>
+<p>Note that we treat all the priors as independent and while 10 parameters are listed here, all models fitted will be a subset of this model (and the true largest number of parameters fitted for any one model is 6).</p>
+</div>
+<div id="conditional-posteriors" class="section level3 hasAnchor" number="6.3.3">
+<h3><span class="header-section-number">6.3.3</span> Conditional posterior distributions<a href="methodology.html#conditional-posteriors" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Let</p>
+<ul>
+<li><p><span class="math inline">\(\mathbf{y} = \left( y_{37},\ldots,y_{108} \right),\)</span></p></li>
+<li><p><span class="math inline">\(\mathbf{\epsilon} = \left( \epsilon_{37},\ldots,\epsilon_{108} \right),\)</span></p></li>
+<li><p><span class="math inline">\(\mathbf{\gamma} = \left( \mu,\sigma,\phi,\Phi_{1},\Phi_{2},\theta_{1},\theta_{2},\Theta_{1},\Theta_{2} \right),\)</span> and</p></li>
+<li><p><span class="math inline">\(\lambda\)</span> be the right-hand side of Equation <a href="methodology.html#eq:sarima">(6.1)</a>, that is,</p></li>
+</ul>
+<p><span class="math display">\[
+\begin{aligned}
+\lambda ={}&amp; \mu + \epsilon_{t} + \theta_{1}\epsilon_{t - 1} + \theta_{2}\epsilon_{t - 2}
++ \Theta_{1}\epsilon_{t - 12} + \theta_{1}\Theta_{1}\epsilon_{t - 13} \\
+&amp;+ \theta_{2}\Theta_{1}\epsilon_{t - 14} + \Theta_{2}\epsilon_{t - 24}
++ \theta_{1}\Theta_{2}\epsilon_{t - 25} + \theta_{2}\Theta_{2}\epsilon_{t - 26} \\
+&amp;+ \phi\left( y_{t - 1} - \mu \right) + \left( 1 + \Phi_{1} \right)\left( y_{t - 12} - \mu \right)
+- \left( \phi + \phi\Phi_{1} \right)\left( y_{t - 13} - \mu \right) \\
+&amp;+ \left( \Phi_{2} - \Phi_{1} \right)\left( y_{t - 24} - \mu \right)
++ \left( \phi\Phi_{1} - \phi\Phi_{2} \right)\left( y_{t - 25} - \mu \right)
+- \Phi_{2}\left( y_{t - 36} - \mu \right) \\
+&amp;+ \phi\Phi_{2}\left( y_{t - 37} - \mu \right).
+\end{aligned}
+\]</span></p>
+<p>Since, we treat our parameters are independent, our conditional posterior distributions can be derived in the manner below, where all parameters can take any real value, except that <span class="math inline">\(\sigma &gt; 0\)</span>. Note that a minus in the subscript removes an element from a vector.</p>
+<p>All parameters have been left in even if they are not directly relevant to the conditional distribution since we need to multiply all these distributions in our Markov chain Monte Carlo algorithm.</p>
+<p><span class="math display">\[
+\begin{aligned}
+p\left( \mu \middle| \mathbf{y},\mathbf{\epsilon},\mathbf{\gamma}_{- \mu} \right)
+&amp;\propto \left\{ \prod_{t = 37}^{108}{p\left( y_{t} \middle| \mathbf{\gamma},\mathbf{\epsilon},\mathbf{y}_{- t} \right)} \right\}\ p(\mu) \\
+&amp;\propto \left\{ \prod_{t = 37}^{108}{\exp\left\lbrack - \frac{1}{2}\left( \frac{y_{t} - \lambda}{\sigma} \right)^{2} \right\rbrack} \right\}\ \exp\left\lbrack - \frac{1}{2}\left( \frac{\mu}{10} \right)^{2} \right\rbrack
+\end{aligned}
+\]</span></p>
+<p><span class="math display">\[
+\begin{aligned}
+p\left( \sigma \middle| \mathbf{y},\mathbf{\epsilon},\mathbf{\gamma}_{- \sigma} \right)
+&amp;\propto \left\{ \prod_{t = 37}^{108}{p\left( y_{t} \middle| \mathbf{\gamma},\mathbf{\epsilon},\mathbf{y}_{- t} \right)} \right\}\ \left\{ \prod_{t = 37}^{108}{p\left( \epsilon_{t} \middle| \mathbf{\gamma},\mathbf{\epsilon}_{- t},\mathbf{y} \right)} \right\}\ p(\sigma) \\
+&amp;\propto \left\{ \prod_{t = 37}^{108}{\frac{1}{\sigma}\exp\left\lbrack - \frac{1}{2}\left( \frac{y_{t} - \lambda}{\sigma} \right)^{2} \right\rbrack} \right\}\ \left\{ \prod_{t = 37}^{108}{\frac{1}{\sigma}\exp\left\lbrack - \frac{1}{2}\left( \frac{\epsilon_{t}}{\sigma} \right)^{2} \right\rbrack} \right\} \\
+&amp;\qquad \times {\frac{1}{\sigma}\left( 1 + \left( \frac{\sigma}{5} \right)^{2} \right)}^{- 1} \\
+&amp;= \frac{1}{\sigma^{145}}\ \left\{ \prod_{t = 37}^{108}{\exp\left\lbrack - \frac{1}{2}\left( \left( \frac{y_{t} - \lambda}{\sigma} \right)^{2} + \left( \frac{\epsilon_{t}}{\sigma} \right)^{2} \right) \right\rbrack} \right\}\ \left( 1 + \left( \frac{\sigma}{5} \right)^{2} \right)^{- 1}
+\end{aligned}
+\]</span></p>
+<p><span class="math display">\[p\left( \phi \middle| \mathbf{y},\mathbf{\epsilon},\mathbf{\gamma}_{- \phi} \right) \propto \left\{ \prod_{t = 37}^{108}{{\frac{1}{\sigma}\exp}\left\lbrack - \frac{1}{2}\left( \frac{y_{t} - \lambda}{\sigma} \right)^{2} \right\rbrack} \right\}\ \exp\left\lbrack - \frac{1}{2}\left( \frac{\phi}{2} \right)^{2} \right\rbrack\]</span></p>
+<p><span class="math display">\[p\left( \Phi_{j} \middle| \mathbf{y},\mathbf{\epsilon},\mathbf{\gamma}_{- \Phi_{j}} \right) \propto \left\{ \prod_{t = 37}^{108}{{\frac{1}{\sigma}\exp}\left\lbrack - \frac{1}{2}\left( \frac{y_{t} - \lambda}{\sigma} \right)^{2} \right\rbrack} \right\}\ \exp\left\lbrack - \frac{1}{2}\left( \frac{\Phi_{j}}{2} \right)^{2} \right\rbrack\]</span></p>
+<p><span class="math display">\[p\left( \theta_{k} \middle| \mathbf{y},\mathbf{\epsilon},\mathbf{\gamma}_{- \theta_{k}} \right) \propto \left\{ \prod_{t = 37}^{108}{{\frac{1}{\sigma}\exp}\left\lbrack - \frac{1}{2}\left( \frac{y_{t} - \lambda}{\sigma} \right)^{2} \right\rbrack} \right\}\ \exp\left\lbrack - \frac{1}{2}\left( \frac{\theta_{k}}{2} \right)^{2} \right\rbrack\]</span></p>
+<p><span class="math display">\[p\left( \Theta_{l} \middle| \mathbf{y},\mathbf{\epsilon},\mathbf{\gamma}_{- \Theta_{l}} \right) \propto \left\{ \prod_{t = 37}^{108}{{\frac{1}{\sigma}\exp}\left\lbrack - \frac{1}{2}\left( \frac{y_{t} - \lambda}{\sigma} \right)^{2} \right\rbrack} \right\}\ \exp\left\lbrack - \frac{1}{2}\left( \frac{\Theta_{l}}{2} \right)^{2} \right\rbrack\]</span></p>
+<p><span class="math display">\[
+\begin{aligned}
+p\left( \epsilon_{t} \middle| \mathbf{y},\mathbf{\epsilon}_{- \left\{ \geq t \right\}},\mathbf{\gamma} \right)
+&amp;\propto \left\{ \prod_{i = 37}^{t}{{\frac{1}{\sigma}\exp}\left\lbrack - \frac{1}{2}\left( \frac{y_{i} - \lambda}{\sigma} \right)^{2} \right\rbrack} \right\}\ \frac{1}{\sigma}\exp\left\lbrack - \frac{1}{2}\left( \frac{\epsilon_{t}}{\sigma} \right)^{2} \right\rbrack \\
+&amp;= \frac{1}{\sigma^{t - 37 + 2}}\ \left\{ \prod_{i = 37}^{t}{\exp\left\lbrack - \frac{1}{2}\left( \frac{y_{i} - \lambda}{\sigma} \right)^{2} \right\rbrack} \right\}\ \exp\left\lbrack - \frac{1}{2}\left( \frac{\epsilon_{t}}{\sigma} \right)^{2} \right\rbrack
+\end{aligned}
+\]</span></p>
+<p>Note that the density function for the Half Cauchy distribution on <span class="math inline">\(\sigma\)</span> is proportional to (double) the density of the Cauchy distribution, except that the support is now <span class="math inline">\(\sigma &gt; 0\)</span>.</p>
+</div>
+</div>
+<div id="mcmc" class="section level2 hasAnchor" number="6.4">
+<h2><span class="header-section-number">6.4</span> Markov chain Monte Carlo algorithm<a href="methodology.html#mcmc" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The algorithm used to sample the conditional distributions of the variables is the one used in the Stan programming language, which is called the no-U-Turn sampler (Stan Development Team, 2021).</p>
+<p>Note that the numbers of parameters <span class="math inline">\(p\)</span> varies depending on our four time series, but the maximum number of parameters fitted in one model is 6 and the minimum is 5. The initial parameter values are randomly generated (Stan Development Team, 2021).</p>
+<p>The following algorithm is repeated 4 times, so that we have 4 chains.</p>
+<p><strong>Algorithm steps</strong></p>
+<p>Repeat the following steps for each iteration from <span class="math inline">\(i = 1,\ldots,2000\)</span>. The burn-in period will be half of the iterations. Thinning is not required.</p>
+<p>Recall that, at its maximum number of parameters, <span class="math inline">\(\mathbf{\gamma} = \left( \mu,\sigma,\phi,\Phi_{1},\Phi_{2},\theta_{1},\theta_{2},\Theta_{1},\Theta_{2} \right)\)</span>.</p>
+<p>Let the superscript in brackets correspond to the iteration number.</p>
+<p>Hence define the joint distribution of all parameters</p>
+<p><span class="math display">\[
+\begin{aligned}
+p\left( \mathbf{\gamma}|\mathbf{\gamma}^{(i - 1)} \right)
+={}&amp; p\left( \mu \middle| \mathbf{y},\mathbf{\epsilon},\mathbf{\gamma}_{- \mu}^{(i - 1)} \right)\ p\left( \sigma \middle| \mathbf{y},\mathbf{\epsilon},\mathbf{\gamma}_{- \sigma}^{(i - 1)} \right)\ p\left( \phi \middle| \mathbf{y},\mathbf{\epsilon},\mathbf{\gamma}_{- \phi}^{(i - 1)} \right) \\
+&amp;\times p\left( \Phi_{1} \middle| \mathbf{y},\mathbf{\epsilon},\mathbf{\gamma}_{- \Phi_{j}}^{(i - 1)} \right)\ p\left( \Phi_{2} \middle| \mathbf{y},\mathbf{\epsilon},\mathbf{\gamma}_{- \Phi_{j}}^{(i - 1)} \right)\ p\left( \theta_{1} \middle| \mathbf{y},\mathbf{\epsilon},\mathbf{\gamma}_{- \theta_{k}}^{(i - 1)} \right) \\
+&amp;\times p\left( \theta_{2} \middle| \mathbf{y},\mathbf{\epsilon},\mathbf{\gamma}_{- \theta_{k}}^{(i - 1)} \right)\ p\left( \Theta_{1} \middle| \mathbf{y},\mathbf{\epsilon},\mathbf{\gamma}_{- \Theta_{l}}^{(i - 1)} \right)\ p\left( \Theta_{2} \middle| \mathbf{y},\mathbf{\epsilon},\mathbf{\gamma}_{- \Theta_{l}}^{(i - 1)} \right) \\
+&amp;\times \left\{ \prod_{i = 37}^{108}{p\left( \epsilon_{t} \middle| \mathbf{y},\mathbf{\epsilon}_{- \left\{ \geq t \right\}},\mathbf{\gamma}^{(i - 1)} \right)} \right\}
+\end{aligned}
+\]</span></p>
+<p>At iteration <span class="math inline">\(i\)</span> of the sampling algorithm:</p>
+<p><strong>Step 1</strong></p>
+<p>If <span class="math inline">\(i \leq 1000\)</span>, set <span class="math inline">\(M = I_{p}\)</span>. Otherwise, set <span class="math inline">\(M\)</span> as the reciprocal of the diagonal values from the covariance matrix of <span class="math inline">\(\mathbf{\gamma}^{(i = 1000)}\)</span>.</p>
+<p><strong>Step 2</strong></p>
+<p>Draw <span class="math inline">\(\rho\ \sim\ N_{p}(0,M)\)</span> and <span class="math inline">\(\epsilon_{t}\ \sim\ N(0,sd = \sigma)\)</span>.</p>
+<p><strong>Step 3: Generate proposal values</strong></p>
+<p>Let <span class="math inline">\(\mathbf{\gamma}^{\mathbf{*}} = \mathbf{\gamma}^{(i - 1)}\)</span>.</p>
+<p>Solve the differential equations</p>
+<p><span class="math display">\[\frac{d\mathbf{\gamma}^{\mathbf{*}}}{dt} = - \frac{d\log\left( p(\rho) \right)}{d\rho},\ \ \frac{d\rho}{dt} = \frac{d\log{p\left( \mathbf{\gamma}^{\mathbf{*}}|\mathbf{\gamma}^{(i - 1)} \right)}}{d\mathbf{\gamma}^{\mathbf{*}}},\]</span></p>
+<p>to obtain <span class="math inline">\(\mathbf{\gamma}^{\mathbf{*}}\)</span>.</p>
+<p>The way to solve these differential equations is complex and beyond the scope of this project. The no-U-Turn sampler uses a unique ‘leapfrog’ algorithm that involves binary trees (Stan Development Team, 2021).</p>
+<p><strong>Step 4: Metropolis-like step</strong></p>
+<p>Let <span class="math inline">\(H\left( \rho,\mathbf{\gamma} \right) = - \log{p(\rho) - \log{p\left( \mathbf{\gamma} \right)}}\)</span></p>
+<p>Step 4a: Compute acceptance ratio</p>
+<p><span class="math display">\[r = \exp\left\{ H\left( \rho,\mathbf{\gamma}^{(i - 1)} \right) - H\left( \rho,\mathbf{\gamma}^{*} \right) \right\}\]</span></p>
+<p>Step 4b: Set <span class="math inline">\(\mathbf{\gamma}^{(i)} = \mathbf{\gamma}^{*}\)</span> if <span class="math inline">\(r &gt; 1\)</span> and to <span class="math inline">\(\mathbf{\gamma}^{(i - 1)}\)</span> otherwise.</p>
+<p><strong>Step 5:</strong> Predict the value of <span class="math inline">\(y_{t}\)</span>, called <span class="math inline">\(\widehat{y_{t}}\)</span> (see Equation <a href="methodology.html#eq:yhat">(6.2)</a>), using the parameter values in <span class="math inline">\(\mathbf{\gamma}^{(i)}\)</span>,</p>
+<p><strong>Step 6:</strong> Set <span class="math inline">\(\epsilon_{t}^{(i)} = y_{t} - \widehat{y_{t}}\)</span>.</p>
+</div>
+<div id="ppc" class="section level2 hasAnchor" number="6.5">
+<h2><span class="header-section-number">6.5</span> Posterior predictive checks<a href="methodology.html#ppc" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>After the algorithm is complete, extract all the columns of <span class="math inline">\(\mathbf{\gamma} = \left( \mu,\sigma,\phi,\Phi_{1},\Phi_{2},\theta_{1},\theta_{2},\Theta_{1},\Theta_{2} \right)\)</span> as MCMC chains.</p>
+<p>For our posterior predictive checks, we will use the <em>Arima</em> function from the <em>forecast</em> package to simulate seasonal ARIMA models with fixed coefficient values. Our main test statistic will be to compare the model, which used 108 observations, to compare to the full set of 120 observations by simulating 120 observations. Two other test statistics will be used – the ACF and PACF of the 120 observations, as these describe the dependence structure of the time series.</p>
+<p>These posterior checks will be conducted against the original data set, aggregated to monthly data, i.e. prior to the Box-Cox transformation, and with the estimated mean parameter subtracted. The algorithm for posterior predictive draws will work as follows.</p>
+<p>For 1,000 loops:</p>
+<ol style="list-style-type: decimal">
+<li><p>From the post burn-in set of <span class="math inline">\(\mathbf{\gamma}\)</span> values, draw a particular row from the coefficient matrix (i.e. parameters from the same iteration).</p></li>
+<li><p>Use the <em>Arima</em> function to simulate the appropriate ARIMA model with coefficients fixed to those that were drawn in step 1.</p></li>
+<li><p>Calculate the test statistics for these simulations.</p></li>
+<li><p>Calculate the proportion of times whether the test statistics exceed the statistics from the real data set.</p></li>
+</ol>
+<p>Note that the Heves and Somogy series, exhibit some instabilities when trying to simulate observations, possibly due to the MA or seasonal MA coefficients being close to non-invertible. This is easily fixed by settings a ‘while’ loop to keep simulating until there are no <em>NA</em> values. It should be noted that the Pest series had one seasonal MA coefficient, but did not require this adjustment.</p>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="eda.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="results.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+  "sharing": {
+    "github": false,
+    "facebook": true,
+    "twitter": true,
+    "linkedin": false,
+    "weibo": false,
+    "instapaper": false,
+    "vk": false,
+    "whatsapp": false,
+    "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+  },
+  "fontsettings": {
+    "theme": "white",
+    "family": "sans",
+    "size": 2
+  },
+  "edit": {
+    "link": "https://github.com/zhigenlin/stats/edit/master/04-Ch4.Rmd",
+    "text": "Edit"
+  },
+  "history": {
+    "link": null,
+    "text": null
+  },
+  "view": {
+    "link": "https://github.com/zhigenlin/stats/blob/master/04-Ch4.Rmd",
+    "text": null
+  },
+  "download": null,
+  "search": {
+    "engine": "fuse",
+    "options": null
+  },
+  "toc": {
+    "collapse": "section"
+  }
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

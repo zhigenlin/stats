@@ -1,11 +1,6 @@
 # Insurance redlining
 
 ```{r}
-knitr::opts_chunk$set(warning = FALSE)
- # Suppress warnings
-```
-
-```{r}
 chicago.data = read.csv("data/chicago.csv")
 group2 = c(60625,60641,60618,60639)
 group3 = c(60651,60647)

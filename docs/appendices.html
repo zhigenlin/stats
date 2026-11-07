@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 10 Appendices | Chickenpox Time Series</title>
+  <meta name="description" content="Chapter 10 Appendices | Chickenpox Time Series" />
+  <meta name="generator" content="bookdown 0.48 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 10 Appendices | Chickenpox Time Series" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 10 Appendices | Chickenpox Time Series" />
+  
+  
+  
+
+<meta name="author" content="" />
+
+
+<meta name="date" content="2026-11-08" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="conclusion.html"/>
+
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Stats</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Overview</a></li>
+<li class="chapter" data-level="2" data-path="petrol-price.html"><a href="petrol-price.html"><i class="fa fa-check"></i><b>2</b> Petrol price</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="petrol-price.html"><a href="petrol-price.html#exploratory-data-analysis"><i class="fa fa-check"></i><b>2.1</b> Exploratory data analysis</a></li>
+<li class="chapter" data-level="2.2" data-path="petrol-price.html"><a href="petrol-price.html#converting-to-a-stationary-series"><i class="fa fa-check"></i><b>2.2</b> Converting to a stationary series</a></li>
+<li class="chapter" data-level="2.3" data-path="petrol-price.html"><a href="petrol-price.html#selecting-appropriate-arima-model"><i class="fa fa-check"></i><b>2.3</b> Selecting appropriate ARIMA model</a></li>
+<li class="chapter" data-level="2.4" data-path="petrol-price.html"><a href="petrol-price.html#choose-between-models-using-aic"><i class="fa fa-check"></i><b>2.4</b> Choose between models using AIC</a></li>
+<li class="chapter" data-level="2.5" data-path="petrol-price.html"><a href="petrol-price.html#diagnostic-tests-and-assessing-model-adequacy"><i class="fa fa-check"></i><b>2.5</b> Diagnostic tests and assessing model adequacy</a></li>
+<li class="chapter" data-level="2.6" data-path="petrol-price.html"><a href="petrol-price.html#references"><i class="fa fa-check"></i><b>2.6</b> References</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="insurance-redlining.html"><a href="insurance-redlining.html"><i class="fa fa-check"></i><b>3</b> Insurance redlining</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="insurance-redlining.html"><a href="insurance-redlining.html#introduction"><i class="fa fa-check"></i><b>3.1</b> Introduction</a></li>
+<li class="chapter" data-level="3.2" data-path="insurance-redlining.html"><a href="insurance-redlining.html#setting-up-the-data"><i class="fa fa-check"></i><b>3.2</b> Setting up the data</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="insurance-redlining.html"><a href="insurance-redlining.html#the-observations"><i class="fa fa-check"></i><b>3.2.1</b> The observations</a></li>
+<li class="chapter" data-level="3.2.2" data-path="insurance-redlining.html"><a href="insurance-redlining.html#the-variables"><i class="fa fa-check"></i><b>3.2.2</b> The variables</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="insurance-redlining.html"><a href="insurance-redlining.html#standard-linear-model"><i class="fa fa-check"></i><b>3.3</b> Standard Linear Model</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="insurance-redlining.html"><a href="insurance-redlining.html#exploratory-data-analysis-1"><i class="fa fa-check"></i><b>3.3.1</b> Exploratory Data Analysis</a></li>
+<li class="chapter" data-level="3.3.2" data-path="insurance-redlining.html"><a href="insurance-redlining.html#variable-selection"><i class="fa fa-check"></i><b>3.3.2</b> Variable Selection</a></li>
+<li class="chapter" data-level="3.3.3" data-path="insurance-redlining.html"><a href="insurance-redlining.html#model-diagnostics"><i class="fa fa-check"></i><b>3.3.3</b> Model Diagnostics</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="insurance-redlining.html"><a href="insurance-redlining.html#added-variable-plots-for-race-and-age"><i class="fa fa-check"></i><b>3.4</b> Added Variable Plots for Race and Age</a></li>
+<li class="chapter" data-level="3.5" data-path="insurance-redlining.html"><a href="insurance-redlining.html#conclusion"><i class="fa fa-check"></i><b>3.5</b> Conclusion</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>4</b> Introduction</a></li>
+<li class="chapter" data-level="5" data-path="eda.html"><a href="eda.html"><i class="fa fa-check"></i><b>5</b> Exploratory data analysis</a></li>
+<li class="chapter" data-level="6" data-path="methodology.html"><a href="methodology.html"><i class="fa fa-check"></i><b>6</b> Methodology</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="methodology.html"><a href="methodology.html#initial-setup"><i class="fa fa-check"></i><b>6.1</b> Initial setup</a></li>
+<li class="chapter" data-level="6.2" data-path="methodology.html"><a href="methodology.html#order-selection"><i class="fa fa-check"></i><b>6.2</b> Order selection</a></li>
+<li class="chapter" data-level="6.3" data-path="methodology.html"><a href="methodology.html#prior-posterior"><i class="fa fa-check"></i><b>6.3</b> Prior and posterior distributions</a>
+<ul>
+<li class="chapter" data-level="6.3.1" data-path="methodology.html"><a href="methodology.html#sampling-model"><i class="fa fa-check"></i><b>6.3.1</b> Sampling model</a></li>
+<li class="chapter" data-level="6.3.2" data-path="methodology.html"><a href="methodology.html#priors"><i class="fa fa-check"></i><b>6.3.2</b> Priors</a></li>
+<li class="chapter" data-level="6.3.3" data-path="methodology.html"><a href="methodology.html#conditional-posteriors"><i class="fa fa-check"></i><b>6.3.3</b> Conditional posterior distributions</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="methodology.html"><a href="methodology.html#mcmc"><i class="fa fa-check"></i><b>6.4</b> Markov chain Monte Carlo algorithm</a></li>
+<li class="chapter" data-level="6.5" data-path="methodology.html"><a href="methodology.html#ppc"><i class="fa fa-check"></i><b>6.5</b> Posterior predictive checks</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="results.html"><a href="results.html"><i class="fa fa-check"></i><b>7</b> Results</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="results.html"><a href="results.html#convergence"><i class="fa fa-check"></i><b>7.1</b> Convergence and posterior predictive checks</a>
+<ul>
+<li class="chapter" data-level="7.1.1" data-path="results.html"><a href="results.html#budapest"><i class="fa fa-check"></i><b>7.1.1</b> Budapest series</a></li>
+<li class="chapter" data-level="7.1.2" data-path="results.html"><a href="results.html#pest"><i class="fa fa-check"></i><b>7.1.2</b> Pest series</a></li>
+<li class="chapter" data-level="7.1.3" data-path="results.html"><a href="results.html#heves"><i class="fa fa-check"></i><b>7.1.3</b> Heves series</a></li>
+<li class="chapter" data-level="7.1.4" data-path="results.html"><a href="results.html#somogy"><i class="fa fa-check"></i><b>7.1.4</b> Somogy series</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="results.html"><a href="results.html#residual-checks"><i class="fa fa-check"></i><b>7.2</b> Residual checks and other non-Bayesian diagnostics</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="discussion.html"><a href="discussion.html"><i class="fa fa-check"></i><b>8</b> Discussion</a></li>
+<li class="chapter" data-level="9" data-path="insurance-redlining.html"><a href="insurance-redlining.html#conclusion"><i class="fa fa-check"></i><b>9</b> Conclusion</a></li>
+<li class="chapter" data-level="10" data-path="appendices.html"><a href="appendices.html"><i class="fa fa-check"></i><b>10</b> Appendices</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="appendices.html"><a href="appendices.html#r-packages"><i class="fa fa-check"></i><b>10.1</b> R packages</a></li>
+<li class="chapter" data-level="10.2" data-path="appendices.html"><a href="appendices.html#reference-list"><i class="fa fa-check"></i><b>10.2</b> Reference List</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Chickenpox Time Series</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="appendices" class="section level1 hasAnchor" number="10">
+<h1><span class="header-section-number">Chapter 10</span> Appendices<a href="appendices.html#appendices" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="r-packages" class="section level2 hasAnchor" number="10.1">
+<h2><span class="header-section-number">10.1</span> R packages<a href="appendices.html#r-packages" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Used in setting up time series and preprocessing (some packaged used indirectly)
+- fpp3 (Hyndman, 2021)
+- tibble (Müller &amp; Wickham, 2021)
+- dplyr (Wickham, François, Henry &amp; Müller, 2021)
+- tidyr (Wickham, 2021)
+- lubridate (Grolemund &amp; Wickham, 2021)
+- tsibble (Wang, Cook, &amp; Hyndman, 2021)
+- tsibbledata (O’Hara-Wild, Hyndman, &amp; Wang, 2021d)
+- feasts (O’Hara-Wild, Hyndman, &amp; Wang, 2021c)
+- fable (O’Hara-Wild, Hyndman, &amp; Wang, 2021a)
+- fabletools (O’Hara-Wild, Hyndman, &amp; Wang, 2021b)
+Bayesian fitting and simulations
+- bayesforecast (Alonzo &amp; Cruz, 2020)
+- forecast (Athanasopoulos et al., 2021)
+Saving data
+- writexl (Ooms, 2021)</p>
+</div>
+<div id="reference-list" class="section level2 hasAnchor" number="10.2">
+<h2><span class="header-section-number">10.2</span> Reference List<a href="appendices.html#reference-list" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Alonzo, I., &amp; Cruz, C. (2020). varstan: An R Package for Bayesian time series models with Stan. R
+package version 1.0.1. Retrieved from <a href="https://CRAN.R-project.org/package=bayesforecast" class="uri">https://CRAN.R-project.org/package=bayesforecast</a>
+Carpenter, B., Gelman, A., Hoffman, M. D., Lee, D., Goodrich, B., Betancourt, M., Brubaker, M., Guo, J.,
+Li, P., &amp; Riddell, A. (2017). Stan: A probabilistic programming language. Journal of
+Statistical Software, 76(1), 1-32. doi: 10.18637/jss.v076.i01.
+University of California. (2021). Hungarian Chickenpox Cases Data Set [Data file]. Retrieved from
+<a href="https://archive.ics.uci.edu/ml/datasets/Hungarian+Chickenpox+Cases" class="uri">https://archive.ics.uci.edu/ml/datasets/Hungarian+Chickenpox+Cases</a>
+Edarabia. (2021). Hungary school holidays. Retrieved November 3, 2021, from
+<a href="https://www.edarabia.com/school-holidays-hungary/" class="uri">https://www.edarabia.com/school-holidays-hungary/</a>
+Grolemund, G., &amp; Wickham, H. (2011). Dates and Times Made Easy with lubridate. Journal of Statistical
+Software, 40(3), 1-25. doi: 10.18637/jss.v040.i03
+Hungarian Central Statistical Office. (2019, January). Gazetteer of Hungary. Retrieved from
+<a href="https://www.ksh.hu/" class="uri">https://www.ksh.hu/</a>
+Hyndman, R.J. (2021). fpp3: Data for “Forecasting: Principles and Practice” (3rd Edition). R package
+version 0.4.0. Retrieved from <a href="https://CRAN.R-project.org/package=fpp3" class="uri">https://CRAN.R-project.org/package=fpp3</a>
+Hyndman, R.J., &amp; Athanasopoulos, G. (2021). Forecasting: Principles and Practice (3rd ed.). Melbourne,
+Australia: OTexts.
+Hyndman, R.J., &amp; Khandakar, Y. (2008). Automatic time series forecasting: The forecast package for R.
+Journal of Statistical Software, 27(1), 1-22. doi: 10.18637/jss.v027.i03
+Hyndman, R., Athanasopoulos, G., Bergmeir, C., Caceres, G., Chhay, L., O’Hara-Wild, M., Petropoulos,
+F., Razbash. S., Wang, E., Yasmeen, F. (2021). forecast: Forecasting functions for time series and
+linear models. R package version 8.15. Retrieved from <a href="https://CRAN.R-" class="uri">https://CRAN.R-</a>
+project.org/package=forecast
+Meszner, Z., Molnar, Z., Rampakakis, E., Yang, H. K., Kuter, B. J., &amp; Wolfson, L. J. (2017). Economic
+burden of varicella in children 1-12 Years of age in Hungary, 2011-2015. BMC Infectious Diseases,
+17(1), 495. doi: 10.1186/s12879-017-2575-6
+Müller, K., &amp; Wickham, H. (2021). tibble: Simple Data Frames. R package version 3.1.5. Retrieved from
+<a href="https://CRAN.R-project.org/package=tibble" class="uri">https://CRAN.R-project.org/package=tibble</a>
+O’Hara-Wild, M., Hyndman, R.J., &amp; Wang, E. (2021a). fable: Forecasting Models for Tidy Time Series. R
+package version 0.3.1. Retrieved from <a href="https://CRAN.R-project.org/package=fable" class="uri">https://CRAN.R-project.org/package=fable</a>
+O’Hara-Wild, M., Hyndman, R.J., &amp; Wang, E. (2021b). fabletools: Core Tools for Packages in the ‘fable’ Framework. R package version 0.3.1. <a href="https://CRAN.R-project.org/package=fabletools" class="uri">https://CRAN.R-project.org/package=fabletools</a>
+O’Hara-Wild, M., Hyndman, R.J., &amp; Wang, E. (2021c). feasts: Feature Extraction and Statistics for Time
+Series. R package version 0.2.2. Retrieved from <a href="https://CRAN.R-project.org/package=feasts" class="uri">https://CRAN.R-project.org/package=feasts</a>
+O’Hara-Wild, M., Hyndman, R.J., &amp; Wang, E. (2021d). tsibbledata: Diverse Datasets for ‘tsibble’. R
+package version 0.3.0. Retrieved from <a href="https://CRAN.R-project.org/package=tsibbledata" class="uri">https://CRAN.R-project.org/package=tsibbledata</a>
+Ooms, J. (2021). writexl: Export Data Frames to Excel ‘xlsx’ Format. R package version 1.4.0. Retrieved
+from <a href="https://CRAN.R-project.org/package=writexl" class="uri">https://CRAN.R-project.org/package=writexl</a>
+Rozemberczki, B., Scherer, P., Kiss, O., Sarkar, R., &amp; Ferenci, T. (2021). Chickenpox Cases in Hungary:
+a Benchmark Dataset for Spatiotemporal Signal Processing with Graph Neural Networks. Retrieved
+from The University of Edinburgh, College of Science and Engineering website:
+<a href="https://www.research.ed.ac.uk/en/publications/chickenpox-cases-in-hungary-a-benchmark-dataset-" class="uri">https://www.research.ed.ac.uk/en/publications/chickenpox-cases-in-hungary-a-benchmark-dataset-</a>
+for-spatiotempora
+R Core Team. (2021). R: A Language and Environment for Statistical Computing. Vienna, Austria.
+Retrieved from <a href="https://www.R-project.org/" class="uri">https://www.R-project.org/</a>
+RStudio Team (2021). RStudio: Integrated Development for R. RStudio. Boston, MA. Retrieved from
+<a href="http://www.rstudio.com/" class="uri">http://www.rstudio.com/</a>
+Stan Development Team. (2021). Stan Modeling Language Users Guide and Reference Manual, Version
+2.28. Retrieved from <a href="https://mc-stan.org" class="uri">https://mc-stan.org</a>
+The Pharma Letter. (2018, March 12). Hungary to provide chickenpox vaccine free of charge from next
+January. The Pharma Letter. Retrieved from <a href="http://www.thepharmaletter.com" class="uri">http://www.thepharmaletter.com</a>
+Wang, E., Cook, D., &amp; Hyndman, R.J. (2020). A new tidy data structure to support exploration and
+modeling of temporal data, Journal of Computational and Graphical Statistics, 29(3), 466-478.
+<a href="doi:10.1080/10618600.2019.1695624" class="uri">doi:10.1080/10618600.2019.1695624</a>.
+Wickham, H. (2021). tidyr: Tidy Messy Data. R package version 1.1.4. Retrieved from <a href="https://CRAN.R-" class="uri">https://CRAN.R-</a>
+project.org/package=tidyr
+Wickham, H., François, R., Henry, L., &amp; Müller, K. (2021). dplyr: A Grammar of Data Manipulation. R
+package version 1.0.7. Retrieved from <a href="https://CRAN.R-project.org/package=dplyr" class="uri">https://CRAN.R-project.org/package=dplyr</a></p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="conclusion.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+  "sharing": {
+    "github": false,
+    "facebook": true,
+    "twitter": true,
+    "linkedin": false,
+    "weibo": false,
+    "instapaper": false,
+    "vk": false,
+    "whatsapp": false,
+    "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+  },
+  "fontsettings": {
+    "theme": "white",
+    "family": "sans",
+    "size": 2
+  },
+  "edit": {
+    "link": "https://github.com/zhigenlin/stats/edit/master/04-Ch4.Rmd",
+    "text": "Edit"
+  },
+  "history": {
+    "link": null,
+    "text": null
+  },
+  "view": {
+    "link": "https://github.com/zhigenlin/stats/blob/master/04-Ch4.Rmd",
+    "text": null
+  },
+  "download": null,
+  "search": {
+    "engine": "fuse",
+    "options": null
+  },
+  "toc": {
+    "collapse": "section"
+  }
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
