@@ -1,15 +1,3 @@
----
-title: "Chickenpox Time Series"
-site: bookdown::bookdown_site
-documentclass: report
-geometry: margin=1in
-fontsize: 11pt
-output:
-  bookdown::gitbook: default
-  bookdown::pdf_book:
-    toc: true
----
-
 # Introduction {#intro}
 
 Treatment of chickenpox (varicella) cases uses up significant economic resources in Hungary. The Hungarian authorities were interested in the past in determining whether widespread distribution of a chickenpox vaccine would be appropriate (Meszner, Molnar, Rampakakis, Yang, Kuter, & Lara, 2017). The data used for this project are 521 weekly Hungarian chickenpox case counts by county from 2005 to 2014 inclusive, with Budapest regarded as its own administrative region. This data were provided publicly by Rozemberczki, Scherer, Kiss, Sarkar, and Ferenci (2021) and downloaded from the UCI Machine Learning Repository (University of California, 2021).
